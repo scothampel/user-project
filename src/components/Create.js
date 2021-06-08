@@ -3,9 +3,7 @@ import '../styles/Create.css';
 
 export default function Create() {
   const handleSubmit = (e) => {
-    e.preventDefault();
     const users = JSON.parse(localStorage.getItem('users'));
-    console.log(users);
 
     const firstName = $('#firstName').val();
     const lastName = $('#lastName').val();
@@ -28,6 +26,8 @@ export default function Create() {
     else {
       localStorage.setItem('users', JSON.stringify([userObj]));
     }
+
+    e.preventDefault();
   }
 
   return (
