@@ -9,9 +9,6 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/">
-          <Show />
-        </Route>
         <Route path="/login">
           <Login />
         </Route>
@@ -20,6 +17,9 @@ function App() {
         </Route>
         <Route path="/edit">
           <Edit />
+        </Route>
+        <Route path="/">
+          <Show />
         </Route>
       </Switch>
     </Router>
