@@ -2,7 +2,7 @@ import '../styles/Edit.css';
 
 export default function Edit() {
   return (
-    <div>
+    <div  className='container' id='edit'>
       Edit User
     </div>
   );
