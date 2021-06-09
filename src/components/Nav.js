@@ -4,8 +4,16 @@ import '../styles/Nav.css';
 
 export default function Nav({ firstName }) {
   return (
-    <nav className='navbar navbar-expand-md navbar-light bg-light'>
+    <nav className='navbar navbar-expand navbar-light bg-light'>
       <div className='container'>
+        <ul className='navbar-nav'>
+          <li className="nav-item">
+            <Link to='/' className='nav-link'>Home</Link>
+          </li>
+          <li className="nav-item">
+          <Link to='/create' className='nav-link'>Add User</Link>
+          </li>
+        </ul>
         <ul className='navbar-nav ms-auto'>
           <li className='nav-item dropdown'>
             {firstName !== '' ?
