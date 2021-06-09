@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import Create from "./components/Create";
 import Edit from "./components/Edit";
 import Login from "./components/Login";
@@ -6,11 +6,13 @@ import Show from "./components/Show";
 import "./styles/App.css";
 
 function App() {
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
   return (
     <Router>
       <Switch>
         <Route path="/login">
-          <Login />
+          {currentUser ? <Redirect to='/' /> : <Login />}
         </Route>
         <Route path="/create">
           <Create />
