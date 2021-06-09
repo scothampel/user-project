@@ -2,26 +2,34 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-d
 import Create from "./components/Create";
 import Edit from "./components/Edit";
 import Login from "./components/Login";
+import Logout from "./components/Logout";
+import Nav from "./components/Nav";
 import Show from "./components/Show";
+import useLocalState from "./handlers/useLocalState";
 import "./styles/App.css";
 
 function App() {
-  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  const [currentUser, setCurrentUser] = useLocalState('currentUser');
+  const [users, setUsers] = useLocalState('users');
 
   return (
     <Router>
+      <Nav firstName={currentUser ? currentUser.firstName : ''} />
       <Switch>
         <Route path="/login">
-          {currentUser ? <Redirect to='/' /> : <Login />}
+          {currentUser ? <Redirect to='/' /> : <Login setCurrentUser={setCurrentUser} users={users} />}
         </Route>
         <Route path="/create">
-          <Create />
+          <Create users={users} setUsers={setUsers} />
         </Route>
         <Route path="/edit">
           <Edit />
         </Route>
+        <Route path="/logout">
+          <Logout setCurrentUser={setCurrentUser} />
+        </Route>
         <Route path="/">
-          <Show />
+          <Show currentUser={currentUser} users={users} />
         </Route>
       </Switch>
     </Router>

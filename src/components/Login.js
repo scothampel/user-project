@@ -1,10 +1,8 @@
 import $ from 'jquery';
 import '../styles/Login.css';
 
-export default function Login() {
+export default function Login({ setCurrentUser, users }) {
   const handleSubmit = (e) => {
-    const users = JSON.parse(localStorage.getItem('users'));
-
     const firstName = $('#firstName').val();
     const lastName = $('#lastName').val();
     const password = $('#password').val();
@@ -15,7 +13,7 @@ export default function Login() {
 
     if (users) {
       if (users.filter(current => current.firstName === firstName && current.lastName === lastName && current.password === password).length === 1) {
-        localStorage.setItem('currentUser', JSON.stringify(userObj));
+        setCurrentUser(userObj);
       }
       else {
         console.log('invalid login');

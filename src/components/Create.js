@@ -1,10 +1,8 @@
 import $ from 'jquery';
 import '../styles/Create.css';
 
-export default function Create() {
+export default function Create({ users, setUsers }) {
   const handleSubmit = (e) => {
-    const users = JSON.parse(localStorage.getItem('users'));
-
     const firstName = $('#firstName').val();
     const lastName = $('#lastName').val();
     const age = $('#age').val();
@@ -20,11 +18,11 @@ export default function Create() {
 
     if (users) {
       if (users.filter(current => current.firstName === firstName && current.lastName === lastName).length === 0) {
-        localStorage.setItem('users', JSON.stringify([...users, userObj]));
+        setUsers([...users, userObj]);
       }
     }
     else {
-      localStorage.setItem('users', JSON.stringify([userObj]));
+      setUsers([userObj]);
     }
 
     e.preventDefault();
