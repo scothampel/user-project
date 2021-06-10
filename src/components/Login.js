@@ -8,8 +8,7 @@ export default function Login({ setCurrentUser, users }) {
     const password = $('#password').val();
     const userObj = {
       firstName,
-      lastName,
-      password
+      lastName
     }
 
     if (users) {
