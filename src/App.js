@@ -14,7 +14,7 @@ function App() {
 
   return (
     <Router>
-      <Nav firstName={currentUser ? currentUser.firstName : ''} />
+      <Nav firstName={currentUser ? currentUser.firstName : ''} users={users} />
       <Switch>
         <Route path="/login">
           {currentUser ? <Redirect to='/' /> : <Login setCurrentUser={setCurrentUser} users={users} />}

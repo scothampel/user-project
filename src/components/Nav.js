@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import $ from 'jquery';
 import '../styles/Nav.css';
 
-export default function Nav({ firstName }) {
+export default function Nav({ firstName, users }) {
   return (
     <nav className='navbar navbar-expand navbar-light bg-light'>
       <div className='container'>
@@ -16,9 +16,11 @@ export default function Nav({ firstName }) {
         </ul>
         <ul className='navbar-nav ms-auto'>
           <li className='nav-item dropdown'>
-            {firstName !== '' ?
-              <button className='nav-link dropdown-toggle border-0 bg-light' data-bs-toggle='dropdown'>Hello, {firstName}</button> :
-              <Link to='/login' className='nav-link'>Log In</Link>
+            {users ? 
+              firstName !== '' ?
+                <button className='nav-link dropdown-toggle border-0 bg-light' data-bs-toggle='dropdown'>Hello, {firstName}</button> :
+                <Link to='/login' className='nav-link'>Log In</Link>
+              : ''
             }
             <ul className='dropdown-menu'>
               <li><Link to='/edit' onClick={() => $('.dropdown-menu').removeClass('show')} className='dropdown-item'>Edit Information</Link></li>
