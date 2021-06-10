@@ -12,7 +12,10 @@ export default function Login({ setCurrentUser, users }) {
     }
 
     if (users) {
-      if (users.filter(current => current.firstName === firstName && current.lastName === lastName && current.password === password).length === 1) {
+      const match = users.filter(current => current.firstName === firstName && current.lastName === lastName && current.password === password);
+      if (match.length === 1) {
+        userObj.age = match[0].age;
+        userObj.phone = match[0].phone;
         setCurrentUser(userObj);
       }
       else {
