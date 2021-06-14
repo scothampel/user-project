@@ -12,19 +12,18 @@ export default function Edit({ currentUser, setCurrentUser, users, setUsers, }) 
     if (users) {
       const editedUsers = users.map(current => {
         if(current.firstName === currentUser.firstName && current.lastName === currentUser.lastName) {
-          setCurrentUser({
-            firstName: firstName || current.firstName,
-            lastName: lastName || current.lastName,
-            age: age || current.age,
-            phone: phone || current.phone
-          });
-          return {
+          const userObj = {
             firstName: firstName || current.firstName,
             lastName: lastName || current.lastName,
             age: age || current.age,
             phone: phone || current.phone,
             password: password || current.password
           }
+          // Removes password from userObj
+          const currentUserObj = (({password, ...out}) => out)(userObj);
+          
+          setCurrentUser(currentUserObj);
+          return userObj;
         }
         else return current;
       });
