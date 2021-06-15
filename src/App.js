@@ -23,7 +23,7 @@ function App() {
           <Create users={users} setUsers={setUsers} />
         </Route>
         <Route path="/edit">
-          <Edit currentUser={currentUser} setCurrentUser={setCurrentUser} users={users} setUsers={setUsers} />
+          {!currentUser ? <Redirect to='/' /> : <Edit currentUser={currentUser} setCurrentUser={setCurrentUser} users={users} setUsers={setUsers} />}
         </Route>
         <Route path="/logout">
           <Logout setCurrentUser={setCurrentUser} />
