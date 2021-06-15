@@ -5,7 +5,7 @@ import Login from "./components/Login";
 import Logout from "./components/Logout";
 import Nav from "./components/Nav";
 import Show from "./components/Show";
-import useLocalState from "./handlers/useLocalState";
+import useLocalState from "./hooks/useLocalState";
 import "./styles/App.css";
 
 function App() {
